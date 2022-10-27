@@ -1,0 +1,32 @@
+.searchWrap {
+  width: 50vh;
+  height: 30vh;
+}
+
+.searchContainer {
+  height: 30vh;
+  overflow: auto;
+}
+
+.searchElement {
+  border: 1px black solid;
+  background-color: bisque;
+  margin: .10em;
+  list-style:none;
+}
+
+.searchElement:hover {
+  background-color: aqua;
+  cursor: pointer;
+}
+
+.activeElement {
+  background-color: black;
+  color: white;
+  margin: .10em;
+  list-style:none;
+}
+
+.activeElement:hover {
+  cursor: pointer;
+}
