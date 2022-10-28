@@ -6,7 +6,7 @@ import PlanList from "../components/Plan/PlanList";
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <div className={styles.default}>
       <div className={styles.container}>
         <KakaoMap />
         <div className={styles.infoContainer}>

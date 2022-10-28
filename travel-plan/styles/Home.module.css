@@ -1,10 +1,15 @@
+.default {
+  background-color: rgb(222, 246, 241);
+  height: 100vh;
+}
+
 .container {
-  margin: .5rem;
+  padding: .5em;
   display: flex;
 }
 
 .infoContainer {
-  width: 80vh;
+  width: 100vh;
   margin-left: 10px;
 }
 

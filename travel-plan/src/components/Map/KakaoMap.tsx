@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from "../../../redux/store";
 import { addPlan } from "../../../redux/planSlice";
 import Paper from '@mui/material/Paper';
-import { setLoded } from "../../../redux/kakaoMapSlice";
+import { setLoded, setViewBounds } from "../../../redux/kakaoMapSlice";
 
 const KakaoMap = () => {
   const [mapLoaded, setMapLoaded] = useState<boolean>(false);
@@ -17,9 +17,20 @@ const KakaoMap = () => {
   const view = useSelector((state: RootState) => state.kakaoMap.currentView);
   const dispatch = useDispatch();
   const node = useSelector((state: RootState) => state.plan.node);
+  const viewBounds = useSelector((state: RootState) => state.kakaoMap.viewBounds);
 
   useEffect(() => {
-    console.log("node 반영", node)
+    if(viewBounds) {
+      const bounds = new kakao.maps.LatLngBounds();
+      linePath.forEach(line => {
+        bounds.extend(line);
+      })
+      map.setBounds(bounds);
+    }
+    dispatch(setViewBounds(false));
+  }, [viewBounds])
+
+  useEffect(() => {
     removePlaceMarker();
     removeLine();
     const placeMarkers = [];
@@ -207,8 +218,7 @@ const KakaoMap = () => {
   }
 
   return (
-    <Paper component="form"
-    sx={{ p: '2px 4px', width: 800 }}>
+    <Paper className={styles.mapContainer}>
       <div id="map" className={styles.map} />
     </Paper>
   );

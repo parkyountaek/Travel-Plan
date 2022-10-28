@@ -4,11 +4,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 type StateType = {
   currentView: Object;
   loaded: boolean;
+  viewBounds: boolean;
 };
 
 const initialState: StateType = {
   currentView: {},
-  loaded: false
+  loaded: false,
+  viewBounds: false,
 };
 
 export const kakaoMapSlice = createSlice({
@@ -19,12 +21,14 @@ export const kakaoMapSlice = createSlice({
       state.currentView = action.payload;
     },
     setLoded: (state: StateType, action: PayloadAction<boolean>) => {
-      console.log(action.payload)
       state.loaded = action.payload;
+    }, 
+    setViewBounds: (state: StateType, action: PayloadAction<boolean>) => {
+      state.viewBounds = action.payload;
     }, 
   }
 });
 
-export const { setView, setLoded } = kakaoMapSlice.actions;
+export const { setView, setLoded, setViewBounds } = kakaoMapSlice.actions;
 
 export default kakaoMapSlice;

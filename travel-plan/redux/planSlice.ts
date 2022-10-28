@@ -21,6 +21,6 @@ export const planSlice = createSlice({
   }
 });
 
-export const { addPlan } = planSlice.actions;
+export const { addPlan, setPlan } = planSlice.actions;
 
 export default planSlice;

@@ -109,8 +109,8 @@ const Info = () => {
             Object.keys(loc).length !== 0 && 
             <div key={loc.id}>
               <ul id={`ul_${loc.id}`} className={styles.searchElement} onClick={() => viewPlace(loc)}>
-                <li>{loc.place_name}</li>
-                <span>{loc.address_name}</span>
+                <li className={styles.placeName}>{loc.place_name}</li>
+                <span className={styles.addressName}>{loc.address_name}</span>
               </ul>
             </div>
           ))}

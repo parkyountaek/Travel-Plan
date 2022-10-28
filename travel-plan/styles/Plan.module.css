@@ -3,6 +3,39 @@
   font-size: large;
 }
 
+.titleContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
 .planList {
   background-color: rgb(245, 247, 190);
+}
+
+.listContainer {
+  background-color: rgb(228, 249, 145);
+  border: 1px solid black;
+}
+.itemContainer {
+  background-color: #fff;
+  border: 1px solid black;
+  padding: 25px 70px;
+  margin: 15px 50px;
+}
+
+.wrap {
+  overflow: auto;
+  height: 38.8vh;
+}
+
+.placeName {
+  list-style:none;
+  font-size: medium;
+  font-weight: bold;
+  color: blue;
+}
+
+.addressName {
+  list-style:none;
+  font-size: small;
 }
