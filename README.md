@@ -6,6 +6,8 @@ Next.js
 <br/>
 TypeScript
 <br/>
+Material UI
+<br/>
 Kakao Map API
 
 # 사용 예시
@@ -31,4 +33,5 @@ Kakao Map API
 
 # 주의 사항
 PC 버전만 지원
+<br/>
 css적 요소는 크게 고려하지 않았습니다..
