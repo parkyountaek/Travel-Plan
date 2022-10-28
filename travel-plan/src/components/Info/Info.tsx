@@ -1,6 +1,5 @@
 import React, { ReactEventHandler, useRef, useState } from "react";
 import { debounce } from "lodash-es";
-import "bootstrap/dist/css/bootstrap.css";
 import styles from "../../../styles/Info.module.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { setView } from '../../../redux/kakaoMapSlice';
@@ -59,7 +58,6 @@ const Info = () => {
 
   const setDefaultStyle = (data: Object[]) => {
     data.forEach(search => {
-      console.log(search.id)
       const element = document.getElementById(`ul_${search.id}`);
       if(element !== null)
         element.className = styles.searchElement; 
@@ -88,14 +86,10 @@ const Info = () => {
   return (
     <>
       <div className={styles.searchWrap}>
-        {/* <div className="input-group input-group-sm mb-3">
-          <span className="input-group-text" id="inputGroup-sizing-sm">장소 검색</span>
-          <input type="text" className="form-control" aria-label="Sizing example input" onChange = {onChange} aria-describedby="inputGroup-sizing-sm" />
-          <button onClick={search}>🔍</button>
-        </div> */}
         <Paper
           component="form"
           sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+          className={styles.searchInputBox}
         >
           <InputBase
             sx={{ ml: 1, flex: 1 }}
@@ -113,7 +107,7 @@ const Info = () => {
         <div className={styles.searchContainer}>
           {place.map(loc => (
             Object.keys(loc).length !== 0 && 
-            <div>
+            <div key={loc.id}>
               <ul id={`ul_${loc.id}`} className={styles.searchElement} onClick={() => viewPlace(loc)}>
                 <li>{loc.place_name}</li>
                 <span>{loc.address_name}</span>

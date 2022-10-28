@@ -1,6 +1,4 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import Script from "next/script";
 import Info from "../components/Info/Info";
 import KakaoMap from "../components/Map/KakaoMap";
 import styles from "../../styles/Home.module.css";
@@ -11,7 +9,7 @@ const Home: NextPage = () => {
     <div>
       <div className={styles.container}>
         <KakaoMap />
-        <div>
+        <div className={styles.infoContainer}>
           <Info />
           <PlanList />
         </div>

@@ -3,3 +3,8 @@
   display: flex;
 }
 
+.infoContainer {
+  width: 80vh;
+  margin-left: 10px;
+}
+

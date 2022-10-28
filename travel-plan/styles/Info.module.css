@@ -1,11 +1,17 @@
 .searchWrap {
   width: 50vh;
-  height: 30vh;
+  height: 40vh;
+}
+
+.searchInputBox {
+  width: 80vh;
+  margin-bottom: 10px;
 }
 
 .searchContainer {
   height: 30vh;
   overflow: auto;
+  width: 80vh;
 }
 
 .searchElement {
