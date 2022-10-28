@@ -20,7 +20,7 @@ const KakaoMap = () => {
   const viewBounds = useSelector((state: RootState) => state.kakaoMap.viewBounds);
 
   useEffect(() => {
-    if(viewBounds) {
+    if(viewBounds && linePath.length !== 0) {
       const bounds = new kakao.maps.LatLngBounds();
       linePath.forEach(line => {
         bounds.extend(line);
