@@ -14,7 +14,6 @@ const Home: NextPage = () => {
           <PlanList />
         </div>
       </div>
-      
     </div>
   );
 };
