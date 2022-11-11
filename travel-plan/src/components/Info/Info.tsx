@@ -12,17 +12,17 @@ import SearchIcon from '@mui/icons-material/Search';
 
 const Info = () => {
   const [keyword, setKeyword] = useState<String>("");
-  const [place, setPlace] = useState<Object[]>([]);
+  const [place, setPlace] = useState<KakaoLocation[]>([]);
   const [ulId, setUlId] = useState<String>("");
 
   const view = useSelector((state: RootState) => state.kakaoMap.currentView);
 
   const dispatch = useDispatch();
 
-  const onChange = (e: React.FormEvent<HTMLInputElement>) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const value = e.currentTarget.value;
     if(value === "") {
-      setPlace([{}]);
+      setPlace([{id: 0, place_name: null, address_name: null, y: 0, x: 0, place_url: null}]);
     } else {
       setKeyword(value);
       // debounceAddress(value);
@@ -48,7 +48,7 @@ const Info = () => {
     const ps = new window.kakao.maps.services.Places();
 
     const placesSearchCB = function (data: any[], status: any) {
-      if (status === window.kakao?.maps.services.Status.OK) {
+      if (status === window.kakao.maps.services.Status.OK) {
         setPlace(data);
         setDefaultStyle(data);
       }
@@ -56,7 +56,7 @@ const Info = () => {
     ps.keywordSearch(`${item}`, placesSearchCB);
   };
 
-  const setDefaultStyle = (data: Object[]) => {
+  const setDefaultStyle = (data: KakaoLocation[]) => {
     data.forEach(search => {
       const element = document.getElementById(`ul_${search.id}`);
       if(element !== null)
@@ -64,7 +64,7 @@ const Info = () => {
     });
   }
 
-  const viewPlace = (loc: Object) => {
+  const viewPlace = (loc: KakaoLocation) => {
     if(ulId.length > 0) {
       const element = document.getElementById(String(ulId));
       if(element !== null)
@@ -77,7 +77,7 @@ const Info = () => {
         dispatch(setView(loc));
         document.getElementById(`ul_${loc.id}`).className = styles.activeElement;
       } else {
-        dispatch(setView({}));
+        dispatch(setView({id: 0, place_name: null, address_name: null, y: 0, x: 0, place_url: null}));
         document.getElementById(`ul_${loc.id}`).className = styles.searchElement;
       }
     }
@@ -95,7 +95,7 @@ const Info = () => {
             sx={{ ml: 1, flex: 1 }}
             placeholder="Search"
             inputProps={{ 'aria-label': 'Search' }}
-            onChange = {onChange}
+            onChange = {e => onChange(e)}
             onKeyPress = {enter}
           />
           <IconButton type="button" sx={{ p: '10px' }} aria-label="search" onClick={search}>

@@ -13,7 +13,7 @@ import IconButton from '@mui/material/IconButton';
 import { setViewBounds } from "../../../redux/kakaoMapSlice";
 
 const PlanList = () => {
-  const [itemList, setItemList] = useState<Object[]>([]);
+  const [itemList, setItemList] = useState<KakaoLocation[]>([]);
   const node = useSelector((state: RootState) => state.plan.node);
   const mapLoaded = useSelector((state: RootState) => state.kakaoMap.loaded);
 
@@ -24,7 +24,7 @@ const PlanList = () => {
   }, [node]);
 
 
-  const handleDrop = (droppedItem: Object) => {
+  const handleDrop = (droppedItem: any) => {
     // Ignore drop outside droppable container
     if (!droppedItem.destination) return;
     const updatedList = [...itemList];
@@ -37,7 +37,7 @@ const PlanList = () => {
     dispatch(setPlan(updatedList));
   };
 
-  const remove = (e: React.MouseEvent<HTMLElement, MouseEvent>, id: String)=> {
+  const remove = (e: React.MouseEvent<HTMLElement, MouseEvent>, id: number)=> {
     e.preventDefault();
     const updateList = itemList.filter(item => item.id !== id);
     setItemList(updateList);
