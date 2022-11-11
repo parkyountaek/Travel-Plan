@@ -49,11 +49,11 @@ const KakaoMap = () => {
     setInfoWindow(infoWindow);
     const closeButton = document.getElementById("closeButton");
     if(closeButton !== null) {
-      closeButton.onclick = () => close;
+      closeButton.onclick = (e) => close(e);
     }
     const addButton = document.getElementById("addButton");
     if(addButton !== null) {
-      addButton.onclick = () => addPlanList;
+      addButton.onclick = (e) => addPlanList(e);
     }
   }, [infoWindow]);
 
@@ -143,7 +143,7 @@ const KakaoMap = () => {
     return marker;
   }
 
-  const addPlanList = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+  const addPlanList = (e: any) => {
     e.preventDefault();
     alert(`${view.place_name}이 경로에 추가되었습니다.`);
     dispatch(addPlan(view));
@@ -156,7 +156,7 @@ const KakaoMap = () => {
       setInfoWindow({});
     }
   }
-  const close = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+  const close = (e: any) : void => {
     e.preventDefault();
     closeInfoWindow();
   }
